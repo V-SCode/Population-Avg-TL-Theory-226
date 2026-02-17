@@ -3,8 +3,7 @@ Initial code base for a population averaging theory developed initially for a th
 
 Working abstract: 
 
-We study elastic transfer learning in infinite-width feature-learning networks, build-
-ing on the adaptive-kernel framework of Lauditi, Bordelon, and Pehlevan. In the
+We study elastic transfer learning in infinite-width feature-learning networks, building on the adaptive-kernel framework of Lauditi, Bordelon, and Pehlevan. In the
 linear teacher–student setting with isotropic Gaussian inputs, the transfer dynamics
 admit a dataset-conditioned saddle-point description in terms of an adapted fea-
 ture kernel. We then propose a data-averaging program: by combining low-rank
