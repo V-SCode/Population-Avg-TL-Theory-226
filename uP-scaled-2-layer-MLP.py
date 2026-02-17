@@ -15,17 +15,7 @@ def set_seed(seed: int = 42):
     torch.backends.cudnn.benchmark = False
 
 class MuPMLP(nn.Module):
-    """
-    Two-layer MLP with mean-field / µP scaling:
 
-        h_i(x)   = (1/sqrt(D)) * W_i · x
-        phi(h)   = linear or ReLU
-        f(x)     = (1 / (gamma0 * N)) * sum_i w_i * phi(h_i(x))
-
-    Parameters are:
-        W: (N, D)
-        w: (N,)
-    """
     def __init__(self, D: int, N: int, gamma0: float = 1.0, activation: str = "linear", device=None):
         super().__init__()
         self.D = D
@@ -42,10 +32,7 @@ class MuPMLP(nn.Module):
         self.w = nn.Parameter(torch.randn(N, device=device))
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
-        """
-        x: (batch_size, D)
-        returns: (batch_size,) predictions
-        """
+
         x = x.to(self.device).float()
 
         h = (1.0 / math.sqrt(self.D)) * x @ self.W.t()
